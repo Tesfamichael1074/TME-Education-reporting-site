@@ -1,43 +1,41 @@
 <template>
   <div class="container">
     <div class="row justify-content-center">
+      <div class="col-md-7 ">
+      
+       <img class= " displayed" src="../assets/tme.jpg"  width="420" height="270"/>
+
+      </div>
       <div class="col-md-8">
+        
         <div class="card">
+          
           <div class="card-header">Login</div>
-          <div class="card-body">
+          <div class="card-body m-md-4">
             <div v-if="error" class="alert alert-danger">{{error}}</div>
+
             <form action="#" @submit.prevent="submit">
-              <div class="form-group row">
-                <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
 
-                <div class="col-md-6">
-                  <input
-                    id="email"
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    value
-                    required
-                    autofocus
-                    v-model="form.email"
-                  />
+
+              <div class="form-group row">
+                <div class="input-group flex-nowrap">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">@</span>
+                  </div>
+                   <input id="email" type="email" class="form-control" name="email" placeholder="enter your email here" aria-label="Username" value required autofocus v-model="form.email"/>
                 </div>
               </div>
 
               <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-
-                <div class="col-md-6">
-                  <input
-                    id="password"
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    required
-                    v-model="form.password"
-                  />
-                </div>
+                    <div class="input-group flex-nowrap">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">*</span>
+                      </div>
+                          <input id="password" type="password" class="form-control" name="password" placeholder="enter your password here" aria-label="Password" required v-model="form.password" />
+                     </div>
               </div>
+
+
 
               <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
@@ -80,3 +78,13 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+     }
+</style>
