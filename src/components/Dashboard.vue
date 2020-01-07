@@ -120,12 +120,12 @@ export default {
     // map `this.user` to `this.$store.getters.user`
     ...mapGetters({
       user: "user",
-      components: {
-        Reports
-    },
-
+     
     })
   },
+ components: {
+        Reports
+    },
 
   data () {
     return {
