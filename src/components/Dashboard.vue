@@ -1,44 +1,49 @@
 <template>
-  <div class="container ">
+<div>
+  <Reports />
 
+  <div class="container-sm pt-5 my-3 border bg-light">
+
+    <form @submit.prevent="addLocation(schoolName, schoolAddress, schoolType, workshopType, numDays, numStudents, avarageAge)">
+      
       <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" >School name</span>
           </div>
-          <input type="text" class="form-control" placeholder="Ex. Woldia preparatory, Wolkite University, etc..." >
+          <input type="text" v-model="schoolName" class="form-control" placeholder="Ex. Woldia preparatory, Wolkite University, etc..." >
     </div>
 
     <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" >School Address</span>
           </div>
-          <input type="text" class="form-control" placeholder="Ex. Woldia/N/Wollo, Cairo, 121 str" >
+          <input type="text" v-model="schoolAddress" class="form-control" placeholder="Ex. Woldia/N/Wollo, Cairo, 121 str" >
     </div>
 
     <div class="form-row align-items-center">
     <div class="col-auto mb-3 my-1">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>School Type...</option>
-        <option value="1">Primary school</option>
-        <option value="2">Secondary School</option>
-        <option value="3">Vocational school</option>
-        <option value="1">University</option>
-        <option value="2">FabLab/Makerspace</option>
-        <option value="3">Library</option>
-        <option value="2">Startup/Org</option>
-        <option value="3">Other</option>
+      <select v-model="schoolType" class="custom-select mr-sm-2" id="inlineFormCustomSelect" onchange="doSomething()">
+        <option value="None" selected>School Type...</option>
+        <option value="Primary school">Primary school</option>
+        <option value="Secondary School">Secondary School</option>
+        <option value="Vocational school">Vocational school</option>
+        <option value="University">University</option>
+        <option value="FabLab/Makerspace">FabLab/Makerspace</option>
+        <option value="Library">Library</option>
+        <option value="Startup/Org">Startup/Org</option>
+        <option value="Other">Other</option>
       </select>
     </div>
 
-    <div class="col-auto mb-3 my-1">
+    <div  class="col-auto mb-3 my-1">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-      <select class="custom-select mr-sm-2">
-        <option selected>Workshop Type...</option>
-        <option value="1">Students Workshop</option>
-        <option value="2">Teacher Training</option>
-        <option value="3">Students/Teacher workshop</option>
-        <option value="4">Individual training</option>
+      <select v-model="workshopType" class="custom-select mr-sm-2">
+        <option value="None" selected>Workshop Type...</option>
+        <option value="Students Workshop">Students Workshop</option>
+        <option value="Teacher Training">Teacher Training</option>
+        <option value="Students/Teacher workshop">Students/Teacher workshop</option>
+        <option value="Individual training">Individual training</option>
       </select>
     </div>
    
@@ -53,25 +58,21 @@
               </p>
 
             </div>
-            <div class="def-number-input number-input safari_only col-auto m-2 mb-4">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                <input class="quantity" min="1" name="quantity" value="10" type="number">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            <div class="col-auto m-2 mb-4">
+                <input v-model="numDays" class="quantity" min="1" name="quantity" value="10" type="number">
               </div>
               
             </div>
 
             <div class="form-row align-items-center">
-              <div class="col-auto md-3 m-2 my-1">
+              <div class="col-auto md-3  my-1">
               <p>
                   Number of Students   
               </p>
 
             </div>
-            <div class="def-number-input number-input safari_only col-auto m-2 mb-4">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                <input class="quantity" min="1" name="quantity" value="10" type="number">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            <div class="col-auto m-2 mb-4">
+                <input v-model="numStudents"  class="quantity" min="1" name="quantity" value="10" type="number">
               </div>
               
             </div>
@@ -88,32 +89,91 @@
               </p>
 
             </div>
-            <div class="def-number-input number-input safari_only col-auto m-2 mb-4">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                <input class="quantity" min="1" name="quantity" value="10" type="number">
-                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            <div class="col-auto m-2 mb-4">
+                <input v-model="avarageAge"  class="quantity" min="1" name="quantity" value="10" type="number">
               </div>
               
             </div>
         </div>
 
+        <div class="row m-2">
+              <button type="submit" class="btn btn-outline-success m-2 ml-auto" >Success</button>
+        </div>
+        
+
     
+    </form>
 
-
+  </div>
   </div>
 </template>
 
 
 <script>
 import { mapGetters } from "vuex";
+import Reports from './Roports.vue';
+import { db } from '../main';
+
 export default {
 
   computed: {
     // map `this.user` to `this.$store.getters.user`
     ...mapGetters({
       user: "user",
+      components: {
+        Reports
+    },
 
     })
+  },
+
+  data () {
+    return {
+      reps: [],
+      schoolName: '',      
+      schoolAddress: '',
+      schoolType: '',
+      workshopType: '',
+      numDays: '',
+      numStudents: '',
+      avarageAge: ''  
+    }
+  },
+  firestore () {
+    return {
+      locations: db.collection('reports').orderBy('name')
+    }
+  },
+   methods: { 
+    addLocation (schoolName, schoolAddress, schoolType, workshopType, numDays, numStudents, avarageAge) {
+      const created = new Date()
+
+      db.collection('reports').add({ schoolName: schoolName,
+                                       schoolAddress: schoolAddress,
+                                       schoolType: schoolType,
+                                       workshopType: workshopType,
+                                       numDays: numDays,
+                                       numStudents: numStudents,
+                                       avarageAge: avarageAge,
+                                       })
+      // Clear values
+      
+      this.schoolName = ''
+      this.schoolAddress = ''
+      this.schoolType = ''
+      this.workshopType = ''
+      this.numDays = ''
+      this.numStudents = ''
+      this.avarageAge = ''
+    },
+
+    deleteLocation (id) {
+      db.collection('locations').doc(id).delete()
+    },
+
+    doSomething(){
+        alert("just");
+    },
   }
 };
 </script>
@@ -121,6 +181,9 @@ export default {
 
 
 <style scoped>
+.container-sm{
+  max-width: 50%;
+}
 .number-input input[type="number"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
