@@ -19,7 +19,7 @@
 
                 <div class="form-row align-items-center col-auto "> 
                     <div class="col">
-                        <h6 class="card-text" style="font-family:system-ui;">schoolType = {{reports.schoolType}}</h6>
+                        <h6 class="card-text" style="font-family:system-ui;">school Type = {{reports.schoolType}}</h6>
                     </div>    
 
                     <div class="col">
@@ -48,15 +48,14 @@
                   </div>
 
                 <div class="col divp1">
-                  <button type="submit" class="btn btn-outline-success m-2 ml-auto" style="position: absolute; right: 0;">Success</button>
+                  <button type="submit" class="btn btn-outline-danger m-2 ml-auto" style="position: absolute; right: 0;" @click="deleteLocation(reports.id)">Delete</button>
               </div>
 
       </div>
   </div>
-
-              
-         
           </div>
+
+
       </article>
     </div>
 </template>
@@ -77,6 +76,11 @@ export default {
       reports: db.collection('reports').orderBy('schoolName')
     }
   },
+  methods: { 
+    deleteLocation (id) {
+      db.collection('reports').doc(id).delete()
+    },
+  }
 
 }
 </script>

@@ -97,7 +97,7 @@
         </div>
 
         <div class="row m-2">
-              <button type="submit" class="btn btn-outline-success m-2 ml-auto" >Success</button>
+              <button type="submit" class="btn btn-outline-success m-2 ml-auto" >Add</button>
         </div>
         
 
