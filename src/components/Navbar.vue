@@ -17,12 +17,20 @@
         <ul class="navbar-nav mr-auto"></ul>
 
         <ul class="navbar-nav  nav-pills">
+
+
           <template v-if="user.loggedIn">
             <div class="nav-item nav-link disabled">{{user.data.displayName}}</div>
             <li class="nav-item ">
+              <router-link to="Dashboard" class="nav-link text-dark">Dashboard</router-link>
+            </li>
+            <li class="nav-item ">
               <a class="nav-link bg-primary text-light" @click.prevent="signOut">Sign out</a>
             </li>
+             
           </template>
+
+
           <template v-else>
             <li class="nav-item">
               <router-link to="login" class="nav-link bg-primary text-light">Login</router-link>
