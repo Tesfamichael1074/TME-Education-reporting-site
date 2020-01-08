@@ -9,31 +9,31 @@
                   <div class="col">
                 <div class="form-row align-items-center col-auto"> 
                     <div class="col">
-                        <h6 class="card-text" style="font-family:system-ui;">School name = {{reports.schoolName}}</h6>
+                        <h6 class="card-text" style="font-family:system-ui;"> <b>School name</b>  = {{reports.schoolName}}</h6>
                     </div>
                   
                     <div class="col">
-                        <h6 class="card-text" style="font-family:system-ui;">School Address = {{reports.schoolAddress}}</h6>
+                        <h6 class="card-text" style="font-family:system-ui;"><b>School Address</b> = {{reports.schoolAddress}}</h6>
                     </div>
                 </div>
 
                 <div class="form-row align-items-center col-auto "> 
                     <div class="col">
-                        <h6 class="card-text" style="font-family:system-ui;">school Type = {{reports.schoolType}}</h6>
+                        <h6 class="card-text" style="font-family:system-ui;"><b>school Type</b> = {{reports.schoolType}}</h6>
                     </div>    
 
                     <div class="col">
-                        <h6 class="card-text" style="font-family:system-ui;">Workshope Type = {{reports.workshopType}}</h6>
+                        <h6 class="card-text" style="font-family:system-ui;"><b>Workshope Type</b> = {{reports.workshopType}}</h6>
                     </div>
                 </div>
 
                 <div class="form-row align-items-center col-auto "> 
                     <div class="col">
-                        <h6 class="card-text" style="font-family:system-ui;">Number of Students = {{reports.numStudents}}</h6>
+                        <h6 class="card-text" style="font-family:system-ui;"><b>Number of Students</b> = {{reports.numStudents}}</h6>
                     </div>
 
                     <div class="col">
-                        <h6 class="card-text" style="font-family:system-ui;">Number of Days = {{reports.numDays}}</h6>
+                        <h6 class="card-text" style="font-family:system-ui;"><b>Number of Days</b> = {{reports.numDays}}</h6>
                     </div>
                    
                 </div>
@@ -41,7 +41,7 @@
                 <div class="form-row align-items-center col-auto ">
 
                     <div class="col">
-                        <h6 class="card-text a" style="font-family:system-ui;">Avarage age = {{reports.avarageAge}}</h6>
+                        <h6 class="card-text a" style="font-family:system-ui;"><b>Avarage age</b> = {{reports.avarageAge}}</h6>
                     </div>
                    
                 </div>

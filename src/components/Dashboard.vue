@@ -25,9 +25,9 @@
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
       <select v-model="schoolType" class="custom-select mr-sm-2" id="inlineFormCustomSelect" onchange="doSomething()">
         <option value="None" selected>School Type...</option>
-        <option value="Primary school">Primary school</option>
-        <option value="Secondary School">Secondary School</option>
-        <option value="Vocational school">Vocational school</option>
+        <option value="Primary">Primary school</option>
+        <option value="Secondary">Secondary School</option>
+        <option value="Vocational">Vocational school</option>
         <option value="University">University</option>
         <option value="FabLab/Makerspace">FabLab/Makerspace</option>
         <option value="Library">Library</option>
@@ -40,10 +40,10 @@
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
       <select v-model="workshopType" class="custom-select mr-sm-2">
         <option value="None" selected>Workshop Type...</option>
-        <option value="Students Workshop">Students Workshop</option>
-        <option value="Teacher Training">Teacher Training</option>
-        <option value="Students/Teacher workshop">Students/Teacher workshop</option>
-        <option value="Individual training">Individual training</option>
+        <option value="Students">Students Workshop</option>
+        <option value="Teacher">Teacher Training</option>
+        <option value="Students/Teacher">Students/Teacher workshop</option>
+        <option value="Individual">Individual training</option>
       </select>
     </div>
    
